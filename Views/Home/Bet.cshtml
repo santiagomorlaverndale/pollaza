@@ -1,0 +1,44 @@
+﻿@model Polla.ViewModel.UserScoreViewModel
+@{
+    ViewData["Title"] = "Apuesta";
+    var count = 0;
+}
+<h1>Apuestas</h1>
+
+<section class="match-section set-bg" data-setbg="img/match/match-bg.jpg" style="background-image: url(&quot;img/match/match-bg.jpg&quot;);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <div class="ms-content">
+                    <h4>Resultados</h4>
+                    @foreach (var match in Model.Matches)
+                    {
+                        <div class="mc-table">
+                            <table>
+                                <tbody>
+                                <tr>
+                                    <td class="left-team">
+                                        <img src="@match.Team1.Flag" alt="">
+                                        <h6>@match.Team1.Title</h6>
+                                    </td>
+                                    <td class="mt-content">
+                                        <div class="mc-op"></div>
+                                        <h4><input name="ScoresTeam1" max="10" min="0" required type="number" value="@Model.ScoresTeam1[count]" style="cursor: auto;"> : <input name="ScoresTeam2" max="10" min="0" required type="number"  value="@Model.ScoresTeam2[count]" style="cursor: auto;"></h4>
+                                        <div class="mc-op">@match.Date.ToString("f")</div>
+                                    </td>
+                                    <td class="right-team">
+                                        <img src="@match.Team2.Flag" alt="">
+                                        <h6>@match.Team2.Title</h6>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        count++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
